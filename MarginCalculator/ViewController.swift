@@ -28,6 +28,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         marginField.delegate = self
         revenueField.delegate = self
         profitField.delegate = self
+        costField.becomeFirstResponder()
         // Do any additional setup after loading the view.
     }
     
@@ -37,6 +38,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
 
         if let editedTextField = obj.object as? NSTextField {
             replaceWithNumbers(withField: editedTextField)
+            calculate(withField: editedTextField)
         }
     }
     
@@ -50,6 +52,119 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     //MARK: Calculation Functions
     
+    func calculate(withField editedTextField: NSTextField) {
+        var cost : Double? = Double(costField.stringValue)
+        var margin : Double? = Double(marginField.stringValue)
+        var revenue : Double? = Double(revenueField.stringValue)
+        var profit : Double? = Double(profitField.stringValue)
+        
+        switch (lastEditedField, editedTextField.identifier!.rawValue) {
+        case ("cost", "margin"), ("margin", "cost"):
+            guard let cost = cost, let margin = margin else {
+                revenueField.stringValue = ""
+                profitField.stringValue = ""
+                return
+            }
+
+            revenue = cost / (1 - (margin / 100))
+            
+            if let revenue = revenue {
+                revenueField.stringValue = String(revenue)
+                profit = revenue - cost
+                if let profit = profit {
+                    profitField.stringValue = String(profit)
+                }
+            }
+
+        case ("cost", "revenue"), ("revenue", "cost"):
+            guard let cost = cost, let revenue = revenue else {
+                marginField.stringValue = ""
+                profitField.stringValue = ""
+                return
+            }
+            
+            margin = 100 * (revenue - cost) / revenue
+            
+            if let margin = margin {
+                marginField.stringValue = String(margin)
+                profit = revenue - cost
+                if let profit = profit {
+                    profitField.stringValue = String(profit)
+                }
+            }
+            
+        case ("cost", "profit"), ("profit", "cost"):
+            guard let cost = cost, let profit = profit else {
+                marginField.stringValue = ""
+                revenueField.stringValue = ""
+                return
+            }
+            
+            revenue = cost + profit
+       
+            if let revenue = revenue {
+                revenueField.stringValue = String(revenue)
+                margin = 100 * (revenue - cost) / revenue
+                if let margin = margin {
+                    marginField.stringValue = String(margin)
+                }
+            }
+            
+        case ("margin", "revenue"), ("revenue", "margin"):
+            guard let margin = margin, let revenue = revenue else {
+                costField.stringValue = ""
+                profitField.stringValue = ""
+                return
+            }
+            
+            cost = revenue - (margin * revenue / 100)
+            
+            if let cost = cost {
+                costField.stringValue = String(cost)
+                profit = revenue - cost
+                if let profit = profit {
+                    profitField.stringValue = String(profit)
+                }
+            }
+            
+        case ("margin", "profit"), ("profit", "margin"):
+            guard let margin = margin, let profit = profit else {
+                costField.stringValue = ""
+                revenueField.stringValue = ""
+                return
+            }
+            
+            revenue = 100 * profit / margin
+            
+            if let revenue = revenue {
+                revenueField.stringValue = String(revenue)
+                cost = revenue - profit
+                if let cost = cost {
+                    costField.stringValue = String(cost)
+                }
+            }
+        case ("revenue", "profit"), ("profit", "revenue"):
+            guard let revenue = revenue, let profit = profit else {
+                costField.stringValue = ""
+                marginField.stringValue = ""
+                return
+            }
+            
+            cost = revenue - profit
+            
+            if let cost = cost {
+                costField.stringValue = String(cost)
+                margin = 100 * (revenue - cost) / revenue
+                if let margin = margin {
+                    marginField.stringValue = String(margin)
+                }
+            }
+        default:
+            print("Could not find last edited field")
+        }
+
+    }
+    
     //MARK: Formatting Functions
     
     func replaceWithNumbers(withField editedTextField : NSTextField) {
@@ -58,18 +173,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         if range == nil {
             print(editedTextField.identifier!.rawValue, editedTextField.stringValue)
         } else {
-            switch editedTextField.identifier!.rawValue {
-            case "cost":
-                costField.stringValue.remove(at: costField.stringValue.index(before: costField.stringValue.endIndex) )
-            case "margin":
-                marginField.stringValue.remove(at: marginField.stringValue.index(before: marginField.stringValue.endIndex) )
-            case "revenue":
-                revenueField.stringValue.remove(at: revenueField.stringValue.index(before: revenueField.stringValue.endIndex) )
-            case "profit":
-                profitField.stringValue.remove(at: profitField.stringValue.index(before: profitField.stringValue.endIndex) )
-            default:
-                print("Could not find edited field name")
-            }
+            editedTextField.stringValue.remove(at: editedTextField.stringValue.index(before: editedTextField.stringValue.endIndex))
         }
     }
     
