@@ -11,6 +11,7 @@
 		56F294192046E43C00D33C34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F294182046E43C00D33C34 /* ViewController.swift */; };
 		56F2941B2046E43C00D33C34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56F2941A2046E43C00D33C34 /* Assets.xcassets */; };
 		56F2941E2046E43C00D33C34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56F2941C2046E43C00D33C34 /* Main.storyboard */; };
+		56F294272046E70E00D33C34 /* SelfChangingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F294262046E70E00D33C34 /* SelfChangingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		56F2941D2046E43C00D33C34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56F2941F2046E43C00D33C34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56F294202046E43C00D33C34 /* MarginCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarginCalculator.entitlements; sourceTree = "<group>"; };
+		56F294262046E70E00D33C34 /* SelfChangingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfChangingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				56F2941C2046E43C00D33C34 /* Main.storyboard */,
 				56F2941F2046E43C00D33C34 /* Info.plist */,
 				56F294202046E43C00D33C34 /* MarginCalculator.entitlements */,
+				56F294262046E70E00D33C34 /* SelfChangingTextField.swift */,
 			);
 			path = MarginCalculator;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			files = (
 				56F294192046E43C00D33C34 /* ViewController.swift in Sources */,
 				56F294172046E43C00D33C34 /* AppDelegate.swift in Sources */,
+				56F294272046E70E00D33C34 /* SelfChangingTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
