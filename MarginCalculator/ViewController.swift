@@ -17,9 +17,13 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var marginField: NSTextField!
     @IBOutlet weak var revenueField: NSTextField!
     @IBOutlet weak var profitField: NSTextField!
+
+    var lastFieldValue : (String, String) = ("","")
     
-    var lastEditedField : String = ""
-    var lastFieldValue : String = ""
+    var valuesDictionary : [String : Double?] = ["Cost" : nil,
+                                                 "Margin" : nil,
+                                                 "Revenue" : nil,
+                                                 "Profit" : nil]
     
     //MARK: ViewDidLoad
     
@@ -42,7 +46,8 @@ class ViewController: NSViewController, NSTextFieldDelegate {
 
         if let editedTextField = obj.object as? NSTextField {
             replaceWithNumbers(withField: editedTextField)
-            lastFieldValue = editedTextField.stringValue
+            lastFieldValue.1 = editedTextField.stringValue
+
             calculate(withField: editedTextField)
         }
     }
@@ -52,10 +57,11 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             
             // Only change the last edited text field value if it matches the last keystrokes otherwise it changes with every tab amongst the fields
             
-            if lastFieldValue == editedTextField.stringValue {
-                lastEditedField = String(describing: editedTextField.identifier!.rawValue)
-                print(lastEditedField)
-//                if let lastFieldValueDouble = Double(lastFieldValue) {
+            if lastFieldValue.1 == editedTextField.stringValue {
+                lastFieldValue.0 = editedTextField.identifier!.rawValue
+                print("controLtextDidEndEditing: ",lastFieldValue)
+                
+//                if let lastFieldValueDouble = Double(lastFieldValue.1) {
 //                    editedTextField.stringValue = lastFieldValueDouble.currency
 //                }
 
@@ -71,7 +77,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         var revenue : Double? = Double(revenueField.stringValue)
         var profit : Double? = Double(profitField.stringValue)
         
-        switch (lastEditedField, editedTextField.identifier!.rawValue) {
+        switch (lastFieldValue.0, editedTextField.identifier!.rawValue) {
         case ("cost", "margin"), ("margin", "cost"):
             guard let cost = cost, let margin = margin else {
                 revenueField.stringValue = ""
