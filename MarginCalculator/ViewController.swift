@@ -30,6 +30,9 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         marginField.delegate = self
         revenueField.delegate = self
         profitField.delegate = self
+    }
+    
+    override func viewWillAppear() {
         costField.becomeFirstResponder()
     }
     
@@ -52,6 +55,10 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             if lastFieldValue == editedTextField.stringValue {
                 lastEditedField = String(describing: editedTextField.identifier!.rawValue)
                 print(lastEditedField)
+//                if let lastFieldValueDouble = Double(lastFieldValue) {
+//                    editedTextField.stringValue = lastFieldValueDouble.currency
+//                }
+
             }
         }
     }
@@ -194,4 +201,25 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
 
 }
+
+//TODO: Number Formatting and De-Formatting Extensions
+
+//extension NumberFormatter {
+//    convenience init(style: Style) {
+//        self.init()
+//        self.locale = Locale(identifier: "en_GB")
+//        numberStyle = style
+//    }
+//}
+//
+//extension Formatter {
+//    static let currency = NumberFormatter(style: .currency)
+//}
+//
+//
+//extension Numeric {
+//    var currency: String {
+//        return Formatter.currency.string(for: self) ?? ""
+//    }
+//}
 
