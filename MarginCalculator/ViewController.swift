@@ -19,17 +19,18 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var profitField: NSTextField!
     
     var lastEditedField : String = ""
+    var lastFieldValue : String = ""
     
     //MARK: ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         costField.delegate = self
         marginField.delegate = self
         revenueField.delegate = self
         profitField.delegate = self
         costField.becomeFirstResponder()
-        // Do any additional setup after loading the view.
     }
     
     //MARK: NSTextField Delegate Functions
@@ -38,6 +39,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
 
         if let editedTextField = obj.object as? NSTextField {
             replaceWithNumbers(withField: editedTextField)
+            lastFieldValue = editedTextField.stringValue
             calculate(withField: editedTextField)
         }
     }
@@ -45,8 +47,12 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     override func controlTextDidEndEditing(_ obj: Notification) {
         if let editedTextField = obj.object as? NSTextField {
             
-            lastEditedField = String(describing: editedTextField.identifier!.rawValue)
-            print(lastEditedField)
+            // Only change the last edited text field value if it matches the last keystrokes otherwise it changes with every tab amongst the fields
+            
+            if lastFieldValue == editedTextField.stringValue {
+                lastEditedField = String(describing: editedTextField.identifier!.rawValue)
+                print(lastEditedField)
+            }
         }
     }
     
