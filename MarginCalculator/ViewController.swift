@@ -20,10 +20,10 @@ class ViewController: NSViewController, NSTextFieldDelegate {
 
     var lastFieldValue : (String, String) = ("","")
     
-    var valuesDictionary : [String : Double?] = ["Cost" : nil,
-                                                 "Margin" : nil,
-                                                 "Revenue" : nil,
-                                                 "Profit" : nil]
+    var valuesDictionary : [String : Double] = ["cost" : 0,
+                                                 "margin" : 0,
+                                                 "revenue" : 0,
+                                                 "profit" : 0]
     
     //MARK: ViewDidLoad
     
@@ -45,6 +45,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     override func controlTextDidChange(_ obj: Notification) {
 
         if let editedTextField = obj.object as? NSTextField {
+            populateDictionary(withField: editedTextField)
             replaceWithNumbers(withField: editedTextField)
             lastFieldValue.1 = editedTextField.stringValue
 
@@ -59,11 +60,15 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             
             if lastFieldValue.1 == editedTextField.stringValue {
                 lastFieldValue.0 = editedTextField.identifier!.rawValue
-                print("controLtextDidEndEditing: ",lastFieldValue)
+                print("controlTextDidEndEditing: ",lastFieldValue)
                 
-//                if let lastFieldValueDouble = Double(lastFieldValue.1) {
-//                    editedTextField.stringValue = lastFieldValueDouble.currency
-//                }
+                if let lastFieldValueDouble = Double(lastFieldValue.1) {
+                    if editedTextField.identifier?.rawValue != "margin" {
+                        editedTextField.stringValue = lastFieldValueDouble.currency
+                    } else {
+                        editedTextField.stringValue = (lastFieldValueDouble / 100).percent
+                    }
+                }
 
             }
         }
@@ -72,114 +77,99 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     //MARK: Calculation Functions
     
     func calculate(withField editedTextField: NSTextField) {
-        var cost : Double? = Double(costField.stringValue)
-        var margin : Double? = Double(marginField.stringValue)
-        var revenue : Double? = Double(revenueField.stringValue)
-        var profit : Double? = Double(profitField.stringValue)
+        
+        // We assign the dictionary to variables to make the code below less verbose
+        
+        var cost = valuesDictionary["cost"] ?? 0
+        var margin = valuesDictionary["margin"] ?? 0
+        var revenue = valuesDictionary["revenue"] ?? 0
+        var profit = valuesDictionary["profit"] ?? 0
         
         switch (lastFieldValue.0, editedTextField.identifier!.rawValue) {
         case ("cost", "margin"), ("margin", "cost"):
-            guard let cost = cost, let margin = margin else {
+
+            if cost != 0, margin != 0 {
+                revenue = cost / (1 - (margin / 100))
+                profit = revenue - cost
+                revenueField.stringValue = revenue.currency
+                profitField.stringValue = profit.currency
+            } else {
                 revenueField.stringValue = ""
                 profitField.stringValue = ""
-                return
-            }
-
-            revenue = cost / (1 - (margin / 100))
-            
-            if let revenue = revenue {
-                revenueField.stringValue = String(revenue)
-                profit = revenue - cost
-                if let profit = profit {
-                    profitField.stringValue = String(profit)
-                }
             }
 
         case ("cost", "revenue"), ("revenue", "cost"):
-            guard let cost = cost, let revenue = revenue else {
+            
+            if cost != 0, revenue != 0 {
+                margin = 100 * (revenue - cost) / revenue
+                profit = revenue - cost
+                marginField.stringValue = (margin / 100).percent
+                profitField.stringValue = profit.currency
+            } else {
                 marginField.stringValue = ""
                 profitField.stringValue = ""
-                return
             }
-            
-            margin = 100 * (revenue - cost) / revenue
-            
-            if let margin = margin {
-                marginField.stringValue = String(margin)
-                profit = revenue - cost
-                if let profit = profit {
-                    profitField.stringValue = String(profit)
-                }
-            }
-            
+
         case ("cost", "profit"), ("profit", "cost"):
-            guard let cost = cost, let profit = profit else {
+            
+            if cost != 0, profit != 0 {
+                revenue = cost + profit
+                margin = 100 * (revenue - cost) / revenue
+                revenueField.stringValue = revenue.currency
+                marginField.stringValue = (margin / 100).percent
+            } else {
                 marginField.stringValue = ""
                 revenueField.stringValue = ""
-                return
-            }
-            
-            revenue = cost + profit
-       
-            if let revenue = revenue {
-                revenueField.stringValue = String(revenue)
-                margin = 100 * (revenue - cost) / revenue
-                if let margin = margin {
-                    marginField.stringValue = String(margin)
-                }
             }
             
         case ("margin", "revenue"), ("revenue", "margin"):
-            guard let margin = margin, let revenue = revenue else {
+            
+            if margin != 0, revenue != 0 {
+                cost = revenue - (margin * revenue / 100)
+                profit = revenue - cost
+                costField.stringValue = cost.currency
+                profitField.stringValue = profit.currency
+            } else {
                 costField.stringValue = ""
                 profitField.stringValue = ""
-                return
             }
-            
-            cost = revenue - (margin * revenue / 100)
-            
-            if let cost = cost {
-                costField.stringValue = String(cost)
-                profit = revenue - cost
-                if let profit = profit {
-                    profitField.stringValue = String(profit)
-                }
-            }
-            
+
         case ("margin", "profit"), ("profit", "margin"):
-            guard let margin = margin, let profit = profit else {
+            
+            if margin != 0, profit != 0 {
+                revenue = 100 * profit / margin
+                cost = revenue - profit
+                costField.stringValue = cost.currency
+                revenueField.stringValue = revenue.currency
+            } else {
                 costField.stringValue = ""
                 revenueField.stringValue = ""
-                return
             }
-            
-            revenue = 100 * profit / margin
-            
-            if let revenue = revenue {
-                revenueField.stringValue = String(revenue)
-                cost = revenue - profit
-                if let cost = cost {
-                    costField.stringValue = String(cost)
-                }
-            }
+
         case ("revenue", "profit"), ("profit", "revenue"):
-            guard let revenue = revenue, let profit = profit else {
+            
+            if revenue != 0, profit != 0 {
+                cost = revenue - profit
+                margin = 100 * (revenue - cost) / revenue
+                costField.stringValue = cost.currency
+                marginField.stringValue = (margin / 100).percent
+            } else {
                 costField.stringValue = ""
                 marginField.stringValue = ""
-                return
             }
-            
-            cost = revenue - profit
-            
-            if let cost = cost {
-                costField.stringValue = String(cost)
-                margin = 100 * (revenue - cost) / revenue
-                if let margin = margin {
-                    marginField.stringValue = String(margin)
-                }
-            }
+
         default:
             print("Could not find last edited field")
+        }
+
+    }
+    
+    func populateDictionary(withField editedTextField : NSTextField) {
+        if editedTextField.stringValue == "" {
+            valuesDictionary[editedTextField.identifier!.rawValue] = 0
+        } else {
+            valuesDictionary[editedTextField.identifier!.rawValue] = Double(editedTextField.stringValue)
+            print(valuesDictionary)
         }
 
     }
@@ -203,29 +193,37 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         marginField.stringValue = ""
         revenueField.stringValue = ""
         profitField.stringValue = ""
+        costField.becomeFirstResponder()
     }
     
 
 }
 
-//TODO: Number Formatting and De-Formatting Extensions
+//TODO: Number Formatting Extensions
 
-//extension NumberFormatter {
-//    convenience init(style: Style) {
-//        self.init()
-//        self.locale = Locale(identifier: "en_GB")
-//        numberStyle = style
-//    }
-//}
-//
-//extension Formatter {
-//    static let currency = NumberFormatter(style: .currency)
-//}
-//
-//
-//extension Numeric {
-//    var currency: String {
-//        return Formatter.currency.string(for: self) ?? ""
-//    }
-//}
+extension NumberFormatter {
+    convenience init(style: Style) {
+        self.init()
+        self.locale = Locale(identifier: "en_GB")
+        self.minimumFractionDigits = 0
+        self.maximumFractionDigits = 2
+        numberStyle = style
+    }
+}
+
+extension Formatter {
+    static let currency = NumberFormatter(style: .currency)
+    static let percent = NumberFormatter(style: .percent)
+}
+
+
+extension Numeric {
+    var currency: String {
+        return Formatter.currency.string(for: self) ?? ""
+    }
+    
+    var percent: String {
+        return Formatter.percent.string(for: self) ?? ""
+    }
+}
 
