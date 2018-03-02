@@ -74,6 +74,19 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
+    
+//    override func controlTextDidBeginEditing(_ obj: Notification) {
+//        if let editedTextField = obj.object as? NSTextField {
+//            
+//            print("didbeginediting was triggered")
+//            if valuesDictionary[editedTextField.identifier!.rawValue]! != 0 {
+//                editedTextField.stringValue = String(valuesDictionary[editedTextField.identifier!.rawValue]!)
+//            }
+//
+//        }
+//        
+//    }
+    
     //MARK: Calculation Functions
     
     func calculate(withField editedTextField: NSTextField) {
