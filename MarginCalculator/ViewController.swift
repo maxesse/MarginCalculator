@@ -60,7 +60,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             
             if lastFieldValue.1 == editedTextField.stringValue {
                 lastFieldValue.0 = editedTextField.identifier!.rawValue
-                print("controlTextDidEndEditing: ",lastFieldValue)
+                // print("controlTextDidEndEditing: ",lastFieldValue)
                 
                 if let lastFieldValueDouble = Double(lastFieldValue.1) {
                     if editedTextField.identifier?.rawValue != "margin" {
@@ -74,17 +74,21 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
+    func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
+        print(control.stringValue)
+        return true
+    }
     
 //    override func controlTextDidBeginEditing(_ obj: Notification) {
 //        if let editedTextField = obj.object as? NSTextField {
-//            
+//
 //            print("didbeginediting was triggered")
 //            if valuesDictionary[editedTextField.identifier!.rawValue]! != 0 {
 //                editedTextField.stringValue = String(valuesDictionary[editedTextField.identifier!.rawValue]!)
 //            }
 //
 //        }
-//        
+//
 //    }
     
     //MARK: Calculation Functions
@@ -182,7 +186,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             valuesDictionary[editedTextField.identifier!.rawValue] = 0
         } else {
             valuesDictionary[editedTextField.identifier!.rawValue] = Double(editedTextField.stringValue)
-            print(valuesDictionary)
+            // print(valuesDictionary)
         }
 
     }
@@ -193,7 +197,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
         let range = editedTextField.stringValue.rangeOfCharacter(from: invalidCharacters)
         if range == nil {
-            print(editedTextField.identifier!.rawValue, editedTextField.stringValue)
+            // print(editedTextField.identifier!.rawValue, editedTextField.stringValue)
         } else {
             editedTextField.stringValue.remove(at: editedTextField.stringValue.index(before: editedTextField.stringValue.endIndex))
         }
