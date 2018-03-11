@@ -8,15 +8,16 @@
 
 import Cocoa
 
-class ViewController: NSViewController, NSTextFieldDelegate {
-    
+class ViewController: NSViewController, SelfFormattingTextFieldDelegate, NSTextFieldDelegate {
+
     
     //MARK: Outlets and variables initialisation
+
+    @IBOutlet weak var costField: SelfFormattingTextField!
+    @IBOutlet weak var marginField: SelfFormattingTextField!
+    @IBOutlet weak var revenueField: SelfFormattingTextField!
+    @IBOutlet weak var profitField: SelfFormattingTextField!
     
-    @IBOutlet weak var costField: NSTextField!
-    @IBOutlet weak var marginField: NSTextField!
-    @IBOutlet weak var revenueField: NSTextField!
-    @IBOutlet weak var profitField: NSTextField!
 
     var lastFieldValue : (String, String) = ("","")
     
@@ -30,31 +31,45 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        costField.myDelegate = self
+        marginField.myDelegate = self
+        revenueField.myDelegate = self
+        profitField.myDelegate = self
+        
         costField.delegate = self
         marginField.delegate = self
         revenueField.delegate = self
         profitField.delegate = self
+        
     }
     
     override func viewWillAppear() {
-        costField.becomeFirstResponder()
+        // costField.becomeFirstResponder()
     }
     
     //MARK: NSTextField Delegate Functions
     
-    override func controlTextDidChange(_ obj: Notification) {
+    func textFieldOnFocus(_ textField: SelfFormattingTextField) {
+        print("Field was focused")
+        if valuesDictionary[textField.identifier!.rawValue]! != 0 {
+            textField.stringValue = String(valuesDictionary[textField.identifier!.rawValue]!)
+        }
+    }
 
-        if let editedTextField = obj.object as? NSTextField {
+    override func controlTextDidChange(_ obj: Notification) {
+        
+        if let editedTextField = obj.object as? SelfFormattingTextField {
             populateDictionary(withField: editedTextField)
             replaceWithNumbers(withField: editedTextField)
             lastFieldValue.1 = editedTextField.stringValue
 
             calculate(withField: editedTextField)
+            print("Control text just changed! \(editedTextField)")
         }
     }
     
     override func controlTextDidEndEditing(_ obj: Notification) {
-        if let editedTextField = obj.object as? NSTextField {
+        if let editedTextField = obj.object as? SelfFormattingTextField {
             
             // Only change the last edited text field value if it matches the last keystrokes otherwise it changes with every tab amongst the fields
             
@@ -93,7 +108,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     //MARK: Calculation Functions
     
-    func calculate(withField editedTextField: NSTextField) {
+    func calculate(withField editedTextField: SelfFormattingTextField) {
         
         // We assign the dictionary to variables to make the code below less verbose
         
@@ -178,22 +193,28 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         default:
             print("Could not find last edited field")
         }
-
+        
+        // Update the dictionary
+        
+        valuesDictionary["cost"] = cost.rounded(toPlaces: 2)
+        valuesDictionary["margin"] = margin.rounded(toPlaces: 2)
+        valuesDictionary["revenue"] = revenue.rounded(toPlaces: 2)
+        valuesDictionary["profit"] = profit.rounded(toPlaces: 2)
     }
     
-    func populateDictionary(withField editedTextField : NSTextField) {
+    func populateDictionary(withField editedTextField : SelfFormattingTextField) {
         if editedTextField.stringValue == "" {
             valuesDictionary[editedTextField.identifier!.rawValue] = 0
         } else {
             valuesDictionary[editedTextField.identifier!.rawValue] = Double(editedTextField.stringValue)
-            // print(valuesDictionary)
+            print(valuesDictionary)
         }
 
     }
     
     //MARK: Formatting Functions
     
-    func replaceWithNumbers(withField editedTextField : NSTextField) {
+    func replaceWithNumbers(withField editedTextField : SelfFormattingTextField) {
         let invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
         let range = editedTextField.stringValue.rangeOfCharacter(from: invalidCharacters)
         if range == nil {
@@ -210,7 +231,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         marginField.stringValue = ""
         revenueField.stringValue = ""
         profitField.stringValue = ""
-        costField.becomeFirstResponder()
+        // costField.becomeFirstResponder()
     }
     
 
@@ -241,6 +262,14 @@ extension Numeric {
     
     var percent: String {
         return Formatter.percent.string(for: self) ?? ""
+    }
+}
+
+extension Double {
+    //Rounds the double to decimal places value
+    func rounded(toPlaces places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }
 

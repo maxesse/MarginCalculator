@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		565A0EAB2055A20E00D756BC /* SelfFormattingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565A0EAA2055A20E00D756BC /* SelfFormattingTextField.swift */; };
 		56F294172046E43C00D33C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F294162046E43C00D33C34 /* AppDelegate.swift */; };
 		56F294192046E43C00D33C34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F294182046E43C00D33C34 /* ViewController.swift */; };
 		56F2941B2046E43C00D33C34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56F2941A2046E43C00D33C34 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		565A0EAA2055A20E00D756BC /* SelfFormattingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfFormattingTextField.swift; sourceTree = "<group>"; };
 		56F294132046E43C00D33C34 /* MarginCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarginCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F294162046E43C00D33C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56F294182046E43C00D33C34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,12 +55,13 @@
 		56F294152046E43C00D33C34 /* MarginCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				56F294162046E43C00D33C34 /* AppDelegate.swift */,
 				56F294182046E43C00D33C34 /* ViewController.swift */,
 				56F2941A2046E43C00D33C34 /* Assets.xcassets */,
+				56F294162046E43C00D33C34 /* AppDelegate.swift */,
 				56F2941C2046E43C00D33C34 /* Main.storyboard */,
 				56F2941F2046E43C00D33C34 /* Info.plist */,
 				56F294202046E43C00D33C34 /* MarginCalculator.entitlements */,
+				565A0EAA2055A20E00D756BC /* SelfFormattingTextField.swift */,
 			);
 			path = MarginCalculator;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56F294192046E43C00D33C34 /* ViewController.swift in Sources */,
+				565A0EAB2055A20E00D756BC /* SelfFormattingTextField.swift in Sources */,
 				56F294172046E43C00D33C34 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
