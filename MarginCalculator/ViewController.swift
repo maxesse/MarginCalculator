@@ -38,11 +38,10 @@ class ViewController: NSViewController {
         revenueField.delegate = self
         profitField.delegate = self
         resetDictionary()
-        
     }
     
     override func viewWillAppear() {
-        // costField.becomeFirstResponder()
+        costField.window?.makeFirstResponder(costField)
     }
     
     //MARK: Calculation Functions
@@ -175,12 +174,13 @@ class ViewController: NSViewController {
     //MARK: - Reset Button
     
     @IBAction func resetButtonPressed(_ sender: NSButton) {
+        costField.window?.makeFirstResponder(costField)
         resetDictionary()
         costField.stringValue = ""
         marginField.stringValue = ""
         revenueField.stringValue = ""
         profitField.stringValue = ""
-        costField.currentEditor()
+
     }
     
 
