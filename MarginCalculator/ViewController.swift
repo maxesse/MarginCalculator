@@ -18,7 +18,11 @@ class ViewController: NSViewController {
     @IBOutlet weak var revenueField: SelfFormattingTextField!
     @IBOutlet weak var profitField: SelfFormattingTextField!
     
-
+    @IBOutlet weak var costLabel: NSTextField!
+    @IBOutlet weak var marginLabel: NSTextField!
+    @IBOutlet weak var revenueLabel: NSTextField!
+    @IBOutlet weak var profitLabel: NSTextField!
+    
     var lastFieldValue : (String, String) = ("","")
     
     var valuesDictionary : [String : Double] = [:]
@@ -40,7 +44,7 @@ class ViewController: NSViewController {
         resetDictionary()
     }
     
-    override func viewWillAppear() {
+    override func viewDidAppear() {
         costField.window?.makeFirstResponder(costField)
     }
     
@@ -140,14 +144,13 @@ class ViewController: NSViewController {
         valuesDictionary["profit"] = profit.rounded(toPlaces: 2)
     }
     
-    //MARK: - Populate Dictionary Functions
+    //MARK: - Value Dictionary Manipulation Functions
     
     func populateDictionary(withField editedTextField : SelfFormattingTextField) {
         if editedTextField.stringValue == "" {
             valuesDictionary[editedTextField.identifier!.rawValue] = 0
         } else {
             valuesDictionary[editedTextField.identifier!.rawValue] = Double(editedTextField.stringValue)
-            print(valuesDictionary)
         }
 
     }
@@ -159,15 +162,34 @@ class ViewController: NSViewController {
                             "profit" : 0]
     }
     
-    //MARK: - Formatting Functions
+    //MARK: - Formatting and UI Highlighting Functions
     
     func replaceWithNumbers(withField editedTextField : SelfFormattingTextField) {
         let invalidCharacters = CharacterSet(charactersIn: "0123456789.").inverted
         let range = editedTextField.stringValue.rangeOfCharacter(from: invalidCharacters)
         if range == nil {
-            // print(editedTextField.identifier!.rawValue, editedTextField.stringValue)
         } else {
             editedTextField.stringValue.remove(at: editedTextField.stringValue.index(before: editedTextField.stringValue.endIndex))
+        }
+    }
+    
+    func highlightLabels() {
+        costLabel.textColor = NSColor.black
+        marginLabel.textColor = NSColor.black
+        profitLabel.textColor = NSColor.black
+        revenueLabel.textColor = NSColor.black
+
+        switch lastFieldValue.0 {
+        case "cost":
+            costLabel.textColor = NSColor.systemBlue
+        case "margin":
+            marginLabel.textColor = NSColor.systemBlue
+        case "revenue":
+            revenueLabel.textColor = NSColor.systemBlue
+        case "profit":
+            profitLabel.textColor = NSColor.systemBlue
+        default:
+            print("Last Field Value Unrecognised")
         }
     }
     
@@ -180,7 +202,8 @@ class ViewController: NSViewController {
         marginField.stringValue = ""
         revenueField.stringValue = ""
         profitField.stringValue = ""
-
+        lastFieldValue.0 = "cost"
+        highlightLabels()
     }
     
 
@@ -197,7 +220,6 @@ extension ViewController : NSTextFieldDelegate {
             lastFieldValue.1 = editedTextField.stringValue
             
             calculate(withField: editedTextField)
-            print("Control text just changed! \(editedTextField.stringValue)")
         }
     }
     
@@ -207,9 +229,9 @@ extension ViewController : NSTextFieldDelegate {
             // Only change the last edited text field value if it matches the last keystrokes otherwise it changes with every tab amongst the fields
             
             if lastFieldValue.1 == editedTextField.stringValue {
-                lastFieldValue.0 = editedTextField.identifier!.rawValue
-                // print("controlTextDidEndEditing: ",lastFieldValue)
-                
+                if editedTextField.stringValue != "" {
+                    lastFieldValue.0 = editedTextField.identifier!.rawValue
+                }
                 if let lastFieldValueDouble = Double(lastFieldValue.1) {
                     if editedTextField.identifier?.rawValue != "margin" {
                         editedTextField.stringValue = lastFieldValueDouble.currency
@@ -234,10 +256,10 @@ extension ViewController : NSTextFieldDelegate {
 
 extension ViewController : SelfFormattingTextFieldDelegate {
     func textFieldOnFocus(_ textField: SelfFormattingTextField) {
-        print("Field was focused \(textField.identifier!.rawValue)")
         if valuesDictionary[textField.identifier!.rawValue]! != 0 {
             textField.stringValue = String(valuesDictionary[textField.identifier!.rawValue]!)
         }
+        highlightLabels()
     }
     
 }

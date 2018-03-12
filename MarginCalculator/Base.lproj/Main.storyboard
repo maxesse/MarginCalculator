@@ -212,7 +212,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDo-K5-FlZ">
-                                <rect key="frame" x="28" y="236" width="107" height="33"/>
+                                <rect key="frame" x="35" y="236" width="107" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cost" id="33O-55-x5u">
                                     <font key="font" size="27" name="HelveticaNeue-UltraLight"/>
@@ -221,7 +221,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fkb-xK-Gkg">
-                                <rect key="frame" x="28" y="118" width="107" height="33"/>
+                                <rect key="frame" x="35" y="118" width="107" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Revenue" id="mf7-zg-zQv">
                                     <font key="font" size="27" name="HelveticaNeue-UltraLight"/>
@@ -230,7 +230,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lj-At-kqu">
-                                <rect key="frame" x="28" y="179" width="107" height="33"/>
+                                <rect key="frame" x="35" y="179" width="107" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Margin" id="Aec-KP-iDq">
                                     <font key="font" size="27" name="HelveticaNeue-UltraLight"/>
@@ -239,7 +239,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jAR-PZ-SRS">
-                                <rect key="frame" x="28" y="60" width="107" height="33"/>
+                                <rect key="frame" x="35" y="60" width="107" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Profit" id="Q8c-HV-l6G">
                                     <font key="font" size="27" name="HelveticaNeue-UltraLight"/>
@@ -248,7 +248,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField identifier="cost" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="f6M-KE-2az" customClass="SelfFormattingTextField" customModule="MarginCalculator" customModuleProvider="target">
-                                <rect key="frame" x="189" y="236" width="248" height="33"/>
+                                <rect key="frame" x="196" y="236" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="P0n-70-9hY">
                                     <font key="font" size="24" name="HelveticaNeue-UltraLight"/>
@@ -257,7 +257,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField identifier="margin" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="1sC-WX-XhV" customClass="SelfFormattingTextField" customModule="MarginCalculator" customModuleProvider="target">
-                                <rect key="frame" x="189" y="179" width="248" height="33"/>
+                                <rect key="frame" x="196" y="179" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="%" drawsBackground="YES" id="IcG-8l-L5Y">
                                     <font key="font" size="24" name="HelveticaNeue-UltraLight"/>
@@ -266,7 +266,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField identifier="revenue" verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="r5e-gr-EIM" customClass="SelfFormattingTextField" customModule="MarginCalculator" customModuleProvider="target">
-                                <rect key="frame" x="189" y="118" width="248" height="33"/>
+                                <rect key="frame" x="196" y="118" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="sBG-1t-RAb">
                                     <font key="font" size="24" name="HelveticaNeue-UltraLight"/>
@@ -275,7 +275,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField identifier="profit" verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qHA-9N-Wz6" customClass="SelfFormattingTextField" customModule="MarginCalculator" customModuleProvider="target">
-                                <rect key="frame" x="189" y="60" width="248" height="33"/>
+                                <rect key="frame" x="196" y="60" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="pvq-8C-JX8">
                                     <font key="font" size="24" name="HelveticaNeue-UltraLight"/>
@@ -284,7 +284,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5P-gs-54r">
-                                <rect key="frame" x="355" y="13" width="88" height="32"/>
+                                <rect key="frame" x="362" y="13" width="88" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="X2M-Wu-beR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -298,9 +298,14 @@
                     </view>
                     <connections>
                         <outlet property="costField" destination="f6M-KE-2az" id="yFv-4b-xDu"/>
+                        <outlet property="costLabel" destination="zDo-K5-FlZ" id="hdU-F0-q1J"/>
+                        <outlet property="costMargin" destination="5lj-At-kqu" id="yJg-Dy-f8O"/>
                         <outlet property="marginField" destination="1sC-WX-XhV" id="AEy-vS-yFa"/>
+                        <outlet property="marginLabel" destination="5lj-At-kqu" id="9ZI-1R-i58"/>
                         <outlet property="profitField" destination="qHA-9N-Wz6" id="clY-S7-naC"/>
+                        <outlet property="profitLabel" destination="jAR-PZ-SRS" id="IB8-2a-VUs"/>
                         <outlet property="revenueField" destination="r5e-gr-EIM" id="beF-5h-FZP"/>
+                        <outlet property="revenueLabel" destination="Fkb-xK-Gkg" id="eBw-Qi-7u9"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
