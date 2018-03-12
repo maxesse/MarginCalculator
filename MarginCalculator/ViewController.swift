@@ -21,10 +21,7 @@ class ViewController: NSViewController {
 
     var lastFieldValue : (String, String) = ("","")
     
-    var valuesDictionary : [String : Double] = ["cost" : 0,
-                                                 "margin" : 0,
-                                                 "revenue" : 0,
-                                                 "profit" : 0]
+    var valuesDictionary : [String : Double] = [:]
     
     //MARK: - ViewDidLoad
     
@@ -40,6 +37,7 @@ class ViewController: NSViewController {
         marginField.delegate = self
         revenueField.delegate = self
         profitField.delegate = self
+        resetDictionary()
         
     }
     
@@ -143,6 +141,8 @@ class ViewController: NSViewController {
         valuesDictionary["profit"] = profit.rounded(toPlaces: 2)
     }
     
+    //MARK: - Populate Dictionary Functions
+    
     func populateDictionary(withField editedTextField : SelfFormattingTextField) {
         if editedTextField.stringValue == "" {
             valuesDictionary[editedTextField.identifier!.rawValue] = 0
@@ -151,6 +151,13 @@ class ViewController: NSViewController {
             print(valuesDictionary)
         }
 
+    }
+    
+    func resetDictionary() {
+        valuesDictionary = ["cost" : 0,
+                            "margin" : 0,
+                            "revenue" : 0,
+                            "profit" : 0]
     }
     
     //MARK: - Formatting Functions
@@ -168,11 +175,12 @@ class ViewController: NSViewController {
     //MARK: - Reset Button
     
     @IBAction func resetButtonPressed(_ sender: NSButton) {
+        resetDictionary()
         costField.stringValue = ""
         marginField.stringValue = ""
         revenueField.stringValue = ""
         profitField.stringValue = ""
-        // costField.becomeFirstResponder()
+        costField.currentEditor()
     }
     
 
@@ -189,7 +197,7 @@ extension ViewController : NSTextFieldDelegate {
             lastFieldValue.1 = editedTextField.stringValue
             
             calculate(withField: editedTextField)
-            print("Control text just changed! \(editedTextField)")
+            print("Control text just changed! \(editedTextField.stringValue)")
         }
     }
     
@@ -210,7 +218,14 @@ extension ViewController : NSTextFieldDelegate {
                     }
                 }
                 
+            } else {
+                if editedTextField.identifier?.rawValue != "margin" {
+                    editedTextField.stringValue = valuesDictionary[editedTextField.identifier!.rawValue]!.currency
+                } else {
+                    editedTextField.stringValue = (valuesDictionary[editedTextField.identifier!.rawValue]! / 100).percent
+                }
             }
+            print(lastFieldValue)
         }
     }
 }
@@ -219,11 +234,12 @@ extension ViewController : NSTextFieldDelegate {
 
 extension ViewController : SelfFormattingTextFieldDelegate {
     func textFieldOnFocus(_ textField: SelfFormattingTextField) {
-        print("Field was focused")
+        print("Field was focused \(textField.identifier!.rawValue)")
         if valuesDictionary[textField.identifier!.rawValue]! != 0 {
             textField.stringValue = String(valuesDictionary[textField.identifier!.rawValue]!)
         }
     }
+    
 }
 
 //MARK: - Number Formatting Extensions
