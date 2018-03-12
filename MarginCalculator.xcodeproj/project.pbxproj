@@ -55,13 +55,13 @@
 		56F294152046E43C00D33C34 /* MarginCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				56F294182046E43C00D33C34 /* ViewController.swift */,
-				56F2941A2046E43C00D33C34 /* Assets.xcassets */,
 				56F294162046E43C00D33C34 /* AppDelegate.swift */,
+				56F294182046E43C00D33C34 /* ViewController.swift */,
+				565A0EAA2055A20E00D756BC /* SelfFormattingTextField.swift */,
+				56F2941A2046E43C00D33C34 /* Assets.xcassets */,
 				56F2941C2046E43C00D33C34 /* Main.storyboard */,
 				56F2941F2046E43C00D33C34 /* Info.plist */,
 				56F294202046E43C00D33C34 /* MarginCalculator.entitlements */,
-				565A0EAA2055A20E00D756BC /* SelfFormattingTextField.swift */,
 			);
 			path = MarginCalculator;
 			sourceTree = "<group>";
