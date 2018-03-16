@@ -32,6 +32,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         costField.myDelegate = self
         marginField.myDelegate = self
         revenueField.myDelegate = self
@@ -42,6 +43,11 @@ class ViewController: NSViewController {
         revenueField.delegate = self
         profitField.delegate = self
         resetDictionary()
+        
+        let locale = Locale.current
+        costField.placeholderString = locale.currencySymbol
+        revenueField.placeholderString = locale.currencySymbol
+        profitField.placeholderString = locale.currencySymbol
     }
     
     override func viewDidAppear() {
@@ -267,7 +273,7 @@ extension ViewController : SelfFormattingTextFieldDelegate {
 extension NumberFormatter {
     convenience init(style: Style) {
         self.init()
-        self.locale = Locale(identifier: "en_GB")
+        self.locale = Locale.current
         self.minimumFractionDigits = 0
         self.maximumFractionDigits = 2
         numberStyle = style

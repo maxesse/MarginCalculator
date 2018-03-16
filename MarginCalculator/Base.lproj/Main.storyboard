@@ -249,7 +249,7 @@
                             <textField identifier="cost" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="f6M-KE-2az" customClass="SelfFormattingTextField" customModule="Margin_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="196" y="236" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="P0n-70-9hY">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="P0n-70-9hY">
                                     <font key="font" size="24" name="HelveticaNeue-UltraLight"/>
                                     <color key="textColor" red="0.043500353765579314" green="0.43763555764338324" blue="0.6006305520304569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -267,7 +267,7 @@
                             <textField identifier="revenue" verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="r5e-gr-EIM" customClass="SelfFormattingTextField" customModule="Margin_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="196" y="118" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="sBG-1t-RAb">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="sBG-1t-RAb">
                                     <font key="font" size="24" name="HelveticaNeue-UltraLight"/>
                                     <color key="textColor" red="0.04350035377" green="0.4376355576" blue="0.60063055200000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -276,7 +276,7 @@
                             <textField identifier="profit" verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qHA-9N-Wz6" customClass="SelfFormattingTextField" customModule="Margin_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="196" y="60" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="pvq-8C-JX8">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" drawsBackground="YES" id="pvq-8C-JX8">
                                     <font key="font" size="24" name="HelveticaNeue-UltraLight"/>
                                     <color key="textColor" red="0.04350035377" green="0.4376355576" blue="0.60063055200000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
