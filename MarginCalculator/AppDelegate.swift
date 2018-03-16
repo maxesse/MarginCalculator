@@ -17,6 +17,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        // Register initial defaults
+        let initialDefaults = ["NSApplicationCrashOnExceptions": true]
+        
+        UserDefaults.standard.register(defaults: initialDefaults)
         Fabric.with([Crashlytics.self])
     }
 
