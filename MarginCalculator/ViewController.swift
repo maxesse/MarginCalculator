@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-
+import Crashlytics
 class ViewController: NSViewController {
 
     
@@ -42,6 +42,7 @@ class ViewController: NSViewController {
         revenueField.delegate = self
         profitField.delegate = self
         resetDictionary()
+
     }
     
     override func viewDidAppear() {
@@ -249,6 +250,7 @@ extension ViewController : NSTextFieldDelegate {
             highlightLabels()
         }
     }
+
 }
 
 //MARK: - SelfFormattingTextFieldDelegate Methods
