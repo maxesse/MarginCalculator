@@ -16,7 +16,7 @@
 
 /* Begin PBXFileReference section */
 		565A0EAA2055A20E00D756BC /* SelfFormattingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfFormattingTextField.swift; sourceTree = "<group>"; };
-		56F294132046E43C00D33C34 /* MarginCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarginCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56F294132046E43C00D33C34 /* Margin Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Margin Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F294162046E43C00D33C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56F294182046E43C00D33C34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		56F2941A2046E43C00D33C34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		56F294142046E43C00D33C34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56F294132046E43C00D33C34 /* MarginCalculator.app */,
+				56F294132046E43C00D33C34 /* Margin Calculator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,9 +69,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		56F294122046E43C00D33C34 /* MarginCalculator */ = {
+		56F294122046E43C00D33C34 /* Margin Calculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56F294232046E43C00D33C34 /* Build configuration list for PBXNativeTarget "MarginCalculator" */;
+			buildConfigurationList = 56F294232046E43C00D33C34 /* Build configuration list for PBXNativeTarget "Margin Calculator" */;
 			buildPhases = (
 				56F2940F2046E43C00D33C34 /* Sources */,
 				56F294102046E43C00D33C34 /* Frameworks */,
@@ -81,9 +81,9 @@
 			);
 			dependencies = (
 			);
-			name = MarginCalculator;
+			name = "Margin Calculator";
 			productName = MarginCalculator;
-			productReference = 56F294132046E43C00D33C34 /* MarginCalculator.app */;
+			productReference = 56F294132046E43C00D33C34 /* Margin Calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 56F2940E2046E43C00D33C34 /* Build configuration list for PBXProject "MarginCalculator" */;
+			buildConfigurationList = 56F2940E2046E43C00D33C34 /* Build configuration list for PBXProject "Margin Calculator" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56F294122046E43C00D33C34 /* MarginCalculator */,
+				56F294122046E43C00D33C34 /* Margin Calculator */,
 			);
 		};
 /* End PBXProject section */
@@ -300,7 +300,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		56F2940E2046E43C00D33C34 /* Build configuration list for PBXProject "MarginCalculator" */ = {
+		56F2940E2046E43C00D33C34 /* Build configuration list for PBXProject "Margin Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56F294212046E43C00D33C34 /* Debug */,
@@ -309,7 +309,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56F294232046E43C00D33C34 /* Build configuration list for PBXNativeTarget "MarginCalculator" */ = {
+		56F294232046E43C00D33C34 /* Build configuration list for PBXNativeTarget "Margin Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56F294242046E43C00D33C34 /* Debug */,

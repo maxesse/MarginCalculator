@@ -12,18 +12,18 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="MarginCalculator" id="1Xt-HY-uBw">
+                            <menuItem title="Margin Calculator" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="MarginCalculator" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Margin Calculator" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About MarginCalculator" id="5kV-Vb-QxS">
+                                        <menuItem title="About Margin Calculator" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Hide MarginCalculator" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide Margin Calculator" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -41,7 +41,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit MarginCalculator" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit Margin Calculator" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -176,7 +176,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MarginCalculator" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Margin_Calculator" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,8 +188,7 @@
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Margin Calculator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="300"/>
+                        <rect key="contentRect" x="609" y="349" width="480" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -206,7 +205,7 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MarginCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Margin_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -247,7 +246,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField identifier="cost" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="f6M-KE-2az" customClass="SelfFormattingTextField" customModule="MarginCalculator" customModuleProvider="target">
+                            <textField identifier="cost" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="f6M-KE-2az" customClass="SelfFormattingTextField" customModule="Margin_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="196" y="236" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="P0n-70-9hY">
@@ -256,7 +255,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField identifier="margin" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="1sC-WX-XhV" customClass="SelfFormattingTextField" customModule="MarginCalculator" customModuleProvider="target">
+                            <textField identifier="margin" verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="1sC-WX-XhV" customClass="SelfFormattingTextField" customModule="Margin_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="196" y="179" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="%" drawsBackground="YES" id="IcG-8l-L5Y">
@@ -265,7 +264,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField identifier="revenue" verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="r5e-gr-EIM" customClass="SelfFormattingTextField" customModule="MarginCalculator" customModuleProvider="target">
+                            <textField identifier="revenue" verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="r5e-gr-EIM" customClass="SelfFormattingTextField" customModule="Margin_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="196" y="118" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="sBG-1t-RAb">
@@ -274,7 +273,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField identifier="profit" verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qHA-9N-Wz6" customClass="SelfFormattingTextField" customModule="MarginCalculator" customModuleProvider="target">
+                            <textField identifier="profit" verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qHA-9N-Wz6" customClass="SelfFormattingTextField" customModule="Margin_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="196" y="60" width="248" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="£" drawsBackground="YES" id="pvq-8C-JX8">
@@ -299,7 +298,6 @@
                     <connections>
                         <outlet property="costField" destination="f6M-KE-2az" id="yFv-4b-xDu"/>
                         <outlet property="costLabel" destination="zDo-K5-FlZ" id="hdU-F0-q1J"/>
-                        <outlet property="costMargin" destination="5lj-At-kqu" id="yJg-Dy-f8O"/>
                         <outlet property="marginField" destination="1sC-WX-XhV" id="AEy-vS-yFa"/>
                         <outlet property="marginLabel" destination="5lj-At-kqu" id="9ZI-1R-i58"/>
                         <outlet property="profitField" destination="qHA-9N-Wz6" id="clY-S7-naC"/>

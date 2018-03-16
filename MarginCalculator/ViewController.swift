@@ -178,7 +178,6 @@ class ViewController: NSViewController {
         marginLabel.textColor = NSColor.black
         profitLabel.textColor = NSColor.black
         revenueLabel.textColor = NSColor.black
-
         switch lastFieldValue.0 {
         case "cost":
             costLabel.textColor = NSColor.systemBlue
@@ -247,7 +246,7 @@ extension ViewController : NSTextFieldDelegate {
                     editedTextField.stringValue = (valuesDictionary[editedTextField.identifier!.rawValue]! / 100).percent
                 }
             }
-            print(lastFieldValue)
+            highlightLabels()
         }
     }
 }
@@ -259,7 +258,6 @@ extension ViewController : SelfFormattingTextFieldDelegate {
         if valuesDictionary[textField.identifier!.rawValue]! != 0 {
             textField.stringValue = String(valuesDictionary[textField.identifier!.rawValue]!)
         }
-        highlightLabels()
     }
     
 }
