@@ -51,6 +51,7 @@ class ViewController: NSViewController {
     }
     
     override func viewDidAppear() {
+        self.view.window?.delegate = self
         costField.window?.makeFirstResponder(costField)
     }
     
@@ -264,6 +265,17 @@ extension ViewController : SelfFormattingTextFieldDelegate {
         if valuesDictionary[textField.identifier!.rawValue]! != 0 {
             textField.stringValue = String(valuesDictionary[textField.identifier!.rawValue]!)
         }
+    }
+    
+}
+
+//MARK: - NSWindowDelegate Methods
+
+extension ViewController : NSWindowDelegate {
+
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        NSApplication.shared.terminate(self)
+        return true
     }
     
 }
